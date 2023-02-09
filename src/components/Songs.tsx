@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export function Songs({}) {
   return (
@@ -12,15 +13,20 @@ export function Songs({}) {
         <Appbar.Action icon="playlist-check" />
       </Appbar.Header>
       <FlatList
-        data={["ahmet", "berna", "ceylin", "deniz", "ayse"]}
+        className="bg-white h-[38%]"
+        data={["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"]}
         renderItem={({ item }) => (
-          <View className="bg-gray-100 flex mb-6 flex-row justify-between shadow-none">
+          <View className="mb-6 flex flex-row shadow-none justify-between">
             <View>
-              <Text>IMAGE HERE</Text>
+              <Icon name="music-box-outline" size={64} />
             </View>
-            <View className="flex-col w-1/3 p-2 bg-fuchsia-200">
-              <Text variant="bodyLarge">Şarkı Adı {item}</Text>
-              <Text variant="bodyLarge">Sanatçı | Albüm</Text>
+            <View className="flex-col py-2">
+              <Text variant="bodyLarge" className="font-bold">
+                {item}
+              </Text>
+              <Text variant="bodyLarge" className="text-gray-500">
+                Sanatçı | Albüm
+              </Text>
             </View>
             <View className="flex-row items-center">
               <Appbar.Action icon="share" />

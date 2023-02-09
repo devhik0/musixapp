@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export function Menu({}) {
   return (
-    <View className="flex-row gap-x-3 p-4 justify-center ">
+    <View className="bg-white flex-row gap-x-3 p-4 justify-center ">
       <Card className="w-1/4 mr-3 bg-purple-700">
         <Card.Content className="flex flex-col justify-start">
           <Icon name="heart" size={20} color="white" />

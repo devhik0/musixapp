@@ -3,7 +3,7 @@ import { Appbar, Button } from "react-native-paper";
 export function Linknav({}) {
   return (
     <Appbar.Header className="bg-white items-center justify-between">
-      <Button onPress={() => console.log("a")} labelStyle={{ fontSize: 16, color: "#000" }}>
+      <Button onPress={() => console.log("a")} labelStyle={{ fontSize: 16, color: "#000" }} mode="outlined">
         Şarkılar
       </Button>
       <Button onPress={() => console.log("a")} labelStyle={{ fontSize: 16, color: "#000" }}>
