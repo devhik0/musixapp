@@ -1,11 +1,11 @@
 == REACT NATIVE VERSION ==  
 
-** refactor
 
 * statik kısmı bitir, 
 * css ekle sonra veri katmanını ekle, en son işlevsellik ekle 
 * bunu plakta yap ! https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation5)
 
+** refactor
 * optimize components and styles for clean arch.
 * add path aliases (en son)
 
