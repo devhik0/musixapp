@@ -1,6 +1,6 @@
 == REACT NATIVE VERSION ==  
 
--> react-native componentlerine bak
+** refactor
 
 * statik kısmı bitir, 
 * css ekle sonra veri katmanını ekle, en son işlevsellik ekle 

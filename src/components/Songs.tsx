@@ -3,6 +3,7 @@ import { FlatList, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Songmenu } from "./Songmenu";
+import { Sortmenu } from "./Sortmenu";
 
 export function Songs({}) {
   return (
@@ -10,7 +11,8 @@ export function Songs({}) {
       <Appbar.Header className="bg-white">
         <Appbar.Action icon="play-circle" size={48} color="#7e22ce" className="m-0 p-0" />
         <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 18, fontWeight: "bold" }} />
-        <Appbar.Action icon="sort" />
+        {/* // ! sort menu */}
+        <Sortmenu />
         <Appbar.Action icon="playlist-check" />
       </Appbar.Header>
       <FlatList
@@ -31,7 +33,7 @@ export function Songs({}) {
             </View>
             <View className="flex-row items-center">
               <Appbar.Action icon="share-outline" size={32} color="#aaa" />
-              {/* // ! this opens menu */}
+              {/* // ! songmenu */}
               <Songmenu />
             </View>
           </View>
