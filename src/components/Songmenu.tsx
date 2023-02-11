@@ -10,13 +10,13 @@ export function Songmenu() {
   return (
     <View className="flex-row justify-center">
       <Menu
-        style={{ marginRight: 30, width: "80%" }}
-        contentStyle={{ backgroundColor: "white" }}
+        style={{ marginRight: 30 }}
+        contentStyle={{ backgroundColor: "white", padding: 12 }}
         visible={visible}
         onDismiss={closeMenu}
         anchor={<Appbar.Action icon="dots-vertical" size={32} color="#aaa" onPress={openMenu} />}
       >
-        <Text className="text-center text-lg font-bold">Dargın Zeynep | Albüm</Text>
+        <Text className="text-center text-lg font-bold mb-2">Dargın Zeynep | Albüm</Text>
         <Menu.Item onPress={() => console.log("yes")} titleStyle={{ fontWeight: "bold" }} title="Daha sonra oynat" />
         <Menu.Item onPress={() => console.log("yes")} titleStyle={{ fontWeight: "bold" }} title="Sıraya ekle" />
         <Menu.Item onPress={() => console.log("yes")} titleStyle={{ fontWeight: "bold" }} title="Çalma istesine ekle" />

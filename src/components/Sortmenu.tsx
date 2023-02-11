@@ -16,7 +16,7 @@ export function Sortmenu() {
         contentStyle={{ backgroundColor: "white" }}
         visible={visible}
         onDismiss={closeMenu}
-        anchor={<Appbar.Action icon="sort" size={32} onPress={openMenu} />}
+        anchor={<Appbar.Action icon="sort" size={28} onPress={openMenu} />}
       >
         <Text className="text-center text-lg font-bold mb-1">Şarkıları sırala</Text>
         <TouchableOpacity
