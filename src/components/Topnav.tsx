@@ -9,9 +9,10 @@ export function Topnav({}) {
     <Appbar.Header className="bg-white">
       <Appbar.Action icon="tune-variant" onPress={() => console.log("test")} />
       <Searchbar
-        className="w-5/6 rounded-full bg-gray-50 shadow-none"
+        className="w-5/6 rounded-full bg-gray-50 shadow-none h-[40]"
         placeholder="Şarkı yada sanatçı arayın"
         placeholderTextColor="#aaa"
+        inputStyle={{ fontSize: 16 }}
         onChangeText={onChangeSearch}
         value={searchQuery}
       />

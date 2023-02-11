@@ -2,6 +2,7 @@ import React from "react";
 import { FlatList, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { Songmenu } from "./Songmenu";
 
 export function Songs({}) {
   return (
@@ -30,9 +31,8 @@ export function Songs({}) {
             </View>
             <View className="flex-row items-center">
               <Appbar.Action icon="share-outline" size={32} color="#aaa" />
-              {/* // ! this opens bottomsheets */}
-
-              <Appbar.Action icon="dots-vertical" size={32} color="#aaa" onPress={() => console.log("working")} />
+              {/* // ! this opens menu */}
+              <Songmenu />
             </View>
           </View>
         )}
