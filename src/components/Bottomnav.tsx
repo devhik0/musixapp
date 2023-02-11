@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 export function Bottomnav({}) {
   return (
-    <Appbar.Header className="bg-white justify-around">
+    <Appbar.Header className="bg-white pb-4 justify-around">
       <Appbar.Action icon="album" size={64} className="pb-2" />
       <View className="pb-2">
         <Text className="text-lg font-bold">Şarkı adı</Text>

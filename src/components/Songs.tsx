@@ -18,7 +18,7 @@ export function Songs({}) {
         renderItem={({ item }) => (
           <View className="mb-6 flex flex-row shadow-none justify-between">
             <View>
-              <Icon name="music-box-outline" size={64} />
+              <Icon name="music-box-outline" size={64} color="#aaa" />
             </View>
             <View className="flex-col py-2">
               <Text variant="bodyLarge" className="font-bold">
@@ -29,8 +29,10 @@ export function Songs({}) {
               </Text>
             </View>
             <View className="flex-row items-center">
-              <Appbar.Action icon="share" />
-              <Appbar.Action icon="dots-vertical" />
+              <Appbar.Action icon="share-outline" size={32} color="#aaa" />
+              {/* // ! this opens bottomsheets */}
+
+              <Appbar.Action icon="dots-vertical" size={32} color="#aaa" onPress={() => console.log("working")} />
             </View>
           </View>
         )}

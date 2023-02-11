@@ -7,10 +7,11 @@ export function Topnav({}) {
 
   return (
     <Appbar.Header className="bg-white">
-      <Appbar.Action icon="tune-variant" />
+      <Appbar.Action icon="tune-variant" onPress={() => console.log("test")} />
       <Searchbar
         className="w-5/6 rounded-full bg-gray-50 shadow-none"
-        placeholder="Search"
+        placeholder="Şarkı yada sanatçı arayın"
+        placeholderTextColor="#aaa"
         onChangeText={onChangeSearch}
         value={searchQuery}
       />
