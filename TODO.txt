@@ -1,5 +1,6 @@
 == REACT NATIVE VERSION ==  
 
+* apply navigation
 
 * statik kısmı bitir, 
 * css ekle sonra veri katmanını ekle, en son işlevsellik ekle 
