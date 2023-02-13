@@ -12,7 +12,7 @@ export function Sortmenu() {
   return (
     <View className="flex-row justify-center">
       <Menu
-        style={{ marginRight: 30, width: "80%" }}
+        style={{}}
         contentStyle={{ backgroundColor: "white" }}
         visible={visible}
         onDismiss={closeMenu}

@@ -1,34 +1,32 @@
+// import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { View } from "react-native";
-import { Text } from "react-native-paper";
+import { StatusBar, Text, View } from "react-native";
+import { Bottomnav } from "src/components/Bottomnav";
+import { Menu } from "src/components/Menu";
+import { Songs } from "src/components/Songs";
+import { Topnav } from "src/components/Topnav";
 
-// Şarkılar
-function HomeScreen() {
+function ArtistsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home!</Text>
+      <Text>Sanatçılar</Text>
     </View>
   );
 }
-function SettingsScreen() {
+
+function AlbumsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
+      <Text>Albümler</Text>
     </View>
   );
 }
-function OtherScreen() {
+
+function FoldersScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Other!</Text>
-    </View>
-  );
-}
-function NotherScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Nother!</Text>
+      <Text>Klasörler</Text>
     </View>
   );
 }
@@ -38,21 +36,19 @@ const Tab = createMaterialTopTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-        <Tab.Screen name="Other" component={OtherScreen} />
-        <Tab.Screen name="Nother" component={NotherScreen} />
-      </Tab.Navigator>
-      {/* <View className="bg-white flex-1">
-        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        <Topnav />
-        <Menu />
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <Topnav />
+      <Menu />
+      <View className="bg-white flex-1">
         <Text className="font-extrabold text-2xl m-2">Tüm Şarkılar</Text>
-        <Linknav />
-        <Songs />
-        <Bottomnav />
-      </View> */}
+        <Tab.Navigator>
+          <Tab.Screen name="Şarkılar" component={Songs} />
+          <Tab.Screen name="Artistler" component={ArtistsScreen} />
+          <Tab.Screen name="Albümler" component={AlbumsScreen} />
+          <Tab.Screen name="Klasörler" component={FoldersScreen} />
+        </Tab.Navigator>
+      </View>
+      <Bottomnav />
     </NavigationContainer>
   );
 }
