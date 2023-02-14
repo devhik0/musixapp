@@ -8,7 +8,6 @@ export function Songs({}) {
   return (
     <View>
       <Appbar.Header className="bg-white">
-        {/* // TODO: Bunu butona dönüştür */}
         <Appbar.Action
           icon="play-circle"
           size={48}
@@ -22,7 +21,8 @@ export function Songs({}) {
         <Appbar.Action icon="playlist-check" size={28} />
       </Appbar.Header>
       <FlatList
-        className="bg-white h-[38%]"
+        // className="bg-white h-[38%]"
+        className="bg-white h-[80%]"
         data={["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"]}
         renderItem={({ item }) => <Songcard item={item} />}
         keyExtractor={(_) => _}

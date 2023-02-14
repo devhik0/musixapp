@@ -1,7 +1,5 @@
 == REACT NATIVE VERSION ==  
 
-* apply navigation (modal)
-
 * statik kısmı bitir, 
 * css ekle sonra veri katmanını ekle, en son işlevsellik ekle 
 * bunu plakta yap ! https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation5)
