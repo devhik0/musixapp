@@ -9,9 +9,7 @@ type Songcardprops = { item: string };
 export function Songcard({ item }: Songcardprops) {
   return (
     <View className="mb-6 flex flex-row shadow-none justify-between">
-      <View>
-        <Icon name="music-box-outline" size={64} color="#aaa" />
-      </View>
+      <Icon name="music-box-outline" size={64} color="#aaa" />
       <View className="flex-col py-2">
         <Text variant="bodyLarge" className="font-bold">
           {item}
@@ -22,7 +20,6 @@ export function Songcard({ item }: Songcardprops) {
       </View>
       <View className="flex-row items-center">
         <Appbar.Action icon="share-outline" size={32} color="#aaa" />
-        {/* // ! songmenu */}
         <Songmenu />
       </View>
     </View>
