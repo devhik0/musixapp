@@ -154,7 +154,9 @@ export default function App() {
       <Menu />
       <View className="bg-white flex-1">
         <Text className="font-extrabold text-2xl m-2">Tüm Şarkılar</Text>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={{ tabBarIndicatorStyle: { backgroundColor: "#7e22ce", height: 4, borderRadius: 5 } }}
+        >
           <Tab.Screen name="Şarkılar" component={SongsScreen} />
           <Tab.Screen name="Artistler" component={ArtistsScreen} />
           <Tab.Screen name="Albümler" component={AlbumsScreen} />
