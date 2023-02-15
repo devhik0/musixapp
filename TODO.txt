@@ -1,6 +1,6 @@
 == REACT NATIVE VERSION ==  
 
--> play modal ! (Todo)
+-> refactor
 
 
 * statik kısmı bitir, 
