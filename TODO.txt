@@ -1,6 +1,6 @@
 == REACT NATIVE VERSION ==  
 
--> refactor
+-> sonraki ekranlar
 
 
 * statik kısmı bitir, 

@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { StatusBar, Text, View } from "react-native";
+import { FlatList, StatusBar, Text, View } from "react-native";
 import { Modal, Portal, ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Playlistmenu } from "./Playlistmenu";
 import { Songinfomenu } from "./Songinfomenu";
-
-// TODO: REFACTOR !!!
 
 type Songmodalprops = { visible: boolean; hideModal: () => void };
 
@@ -35,27 +33,27 @@ export function Songmodal({ visible, hideModal }: Songmodalprops) {
               </View>
               <Text className="text-gray-400">Albüm</Text>
             </View>
-            <View className="flex-row mt-8 justify-center items-center gap-x-6 w-full">
-              <Icon name="shuffle" size={28} color="#e5e7eb" />
-              <Icon name="skip-previous" size={28} color="#e5e7eb" />
-              <Icon name="play-circle" size={60} color="#e5e7eb" />
-              <Icon name="skip-next" size={28} color="#e5e7eb" />
-              <Icon
-                name="playlist-music"
-                size={28}
-                color="#e5e7eb"
-                style={{ marginLeft: 24 }}
-                onPress={showModalList}
+            <View className="flex-row mt-8 px-2 justify-center items-center gap-x-6 w-full">
+              <FlatList
+                horizontal
+                data={["shuffle", "skip-previous", "play-circle", "skip-next", "playlist-music"]}
+                renderItem={({ item }) => (
+                  <View className="gap-x-2 mx-4">
+                    <Icon name={item} size={32} color="#e5e7eb" onPress={showModalList} />
+                  </View>
+                )}
               />
               <Playlistmenu visiblelist={visiblelist} hideModalList={hideModalList} />
             </View>
           </View>
-          <View className="mx-8 mt-4">
-            <ProgressBar progress={0.5} color="#d3d3d3" style={{ backgroundColor: "#7F48AD", height: 2 }} />
-          </View>
-          <View className="mx-8 mt-2 flex flex-row justify-between">
-            <Text className="text-gray-500">0.00</Text>
-            <Text className="text-gray-500">4.32</Text>
+          <View>
+            <View className="mx-8 mt-4">
+              <ProgressBar progress={0.5} color="#d3d3d3" style={{ backgroundColor: "#7F48AD", height: 2 }} />
+            </View>
+            <View className="mx-8 mt-2 flex flex-row justify-between">
+              <Text className="text-gray-500">0.00</Text>
+              <Text className="text-gray-500">4.32</Text>
+            </View>
           </View>
           <View />
         </View>

@@ -1,9 +1,19 @@
 import { useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { Menu } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export function Songinfomenu() {
+  const menuItems = [
+    "Uyku zamanlayıcı",
+    "Zil sesi düzenleyici",
+    "Şarkı bilgilerini düzenle",
+    "Paylaş",
+    "Çalma sırasından kaldır",
+  ];
+
+  const menuIcons = ["timer-outline", "bell-outline", "pencil-outline", "share-outline", "close"];
+
   const [visiblemenu, setVisibleMenu] = useState(false);
   const openMenu = () => setVisibleMenu(true);
   const closeMenu = () => setVisibleMenu(false);
@@ -15,27 +25,15 @@ export function Songinfomenu() {
       onDismiss={closeMenu}
       anchor={<Icon name="dots-vertical" size={28} color="#e5e7eb" onPress={openMenu} />}
     >
-      {/* //! Flatlist here !!! */}
-      <TouchableOpacity className="flex-row items-center">
-        <Icon name="timer-outline" size={24} />
-        <Menu.Item onPress={() => "hey"} title="Uyku zamanlayıcı" />
-      </TouchableOpacity>
-      <TouchableOpacity className="flex-row items-center">
-        <Icon name="bell-outline" size={24} />
-        <Menu.Item onPress={() => "hey"} title="Zil sesi düzenleyici" />
-      </TouchableOpacity>
-      <TouchableOpacity className="flex-row items-center">
-        <Icon name="pencil-outline" size={24} />
-        <Menu.Item onPress={() => "hey"} title="Şarkı bilgilerini düzenle" />
-      </TouchableOpacity>
-      <TouchableOpacity className="flex-row items-center">
-        <Icon name="share-outline" size={24} />
-        <Menu.Item onPress={() => "hey"} title="Paylaş" />
-      </TouchableOpacity>
-      <TouchableOpacity className="flex-row items-center">
-        <Icon name="close" size={24} />
-        <Menu.Item onPress={() => "hey"} title="Çalma sırasından kaldır" />
-      </TouchableOpacity>
+      <FlatList
+        data={menuItems}
+        renderItem={({ item, index }) => (
+          <TouchableOpacity className="flex-row items-center">
+            <Icon name={menuIcons[index]} size={24} />
+            <Menu.Item onPress={() => "hey"} title={item} />
+          </TouchableOpacity>
+        )}
+      />
     </Menu>
   );
 }
