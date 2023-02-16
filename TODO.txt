@@ -1,5 +1,8 @@
 == REACT NATIVE VERSION ==  
 
+=> TODO: 
+
+* refactor
 -> sonraki ekranlar
 
 
