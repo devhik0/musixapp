@@ -2,14 +2,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { NavigationContainer } from "@react-navigation/native";
 import { FlatList, StatusBar, View } from "react-native";
 import { Text } from "react-native-paper";
-import { Bottomnav } from "src/components/Bottomnav";
-import { Menucard } from "src/components/Menucard";
-import { Songcard } from "src/components/Songcard";
-import { Topnav } from "src/components/Topnav";
-import { AlbumsScreen } from "src/screens/AlbumsScreen";
-import { ArtistsScreen } from "src/screens/ArtistsScreen";
-import { FoldersScreen } from "src/screens/FoldersScreen";
-import { SongsScreen } from "src/screens/SongsScreen";
+import { Bottomnav, Menucard, Songcard, Topnav } from "src/components";
+import { AlbumsScreen, ArtistsScreen, FoldersScreen, SongsScreen } from "src/screens";
 
 const Tab = createMaterialTopTabNavigator();
 

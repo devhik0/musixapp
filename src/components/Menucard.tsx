@@ -2,9 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { Appbar, Card, Modal, Portal, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Bottomnav } from "./Bottomnav";
-import { Songmodal } from "./Songmodal";
-import { Sortmenu } from "./Sortmenu";
+import { Bottomnav, Songmodal, Sortmenu } from "src/components";
 
 type Menucardprops = {
   title: string;

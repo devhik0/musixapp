@@ -7,11 +7,7 @@
     "noImplicitThis": true,
     "baseUrl": ".",
     // "paths": {
-    //   "components/*": ["src/components/*"],
-    //   "styles/*": ["src/styles/*"],
-    //   "layout/*": ["src/components/layout/*"],
-    //   "music/*": ["src/components/music/*"]
-    // }
+    // },
     "types": ["nativewind/types"]
   },
   "include": ["**/*.ts", "**/*.tsx"]

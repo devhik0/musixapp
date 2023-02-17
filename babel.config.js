@@ -7,10 +7,7 @@ module.exports = {
         root: ["."],
         extensions: [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
         alias: {
-          "components/*": ["src/components/*"],
-          "styles/*": ["src/styles/*"],
-          "layout/*": ["src/components/layout/*"],
-          "music/*": ["src/components/music/*"],
+          // "@components": "./src/components",
         },
       },
     ],
