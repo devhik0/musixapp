@@ -1,5 +1,6 @@
 export { Bottomnav } from "./Bottomnav";
-export { Menucard } from "./Menucard";
+export { Linknav } from "./Linknav";
+export { Menucard } from "./menu/Menucard";
 export { Playlistmenu } from "./Playlistmenu";
 export { Search } from "./Search";
 export { Songcard } from "./Songcard";
