@@ -1,38 +1,49 @@
 import { useState } from "react";
 import { FlatList, View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { Songcard } from "src/components/Songcard";
-import { Songmodal } from "src/components/Songmodal";
-import { Sortmenu } from "src/components/Sortmenu";
+import { Songcard, Songmodal, Sortmenu } from "src/components";
+import { ScreenContent } from "./ScreenContent";
+import { ScreenHeader } from "./ScreenHeader";
 
-export function SongsScreen({}) {
+const songs = ["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"];
+
+const Header = () => {
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
   return (
-    <View>
-      <Appbar.Header className="bg-white">
-        <Appbar.Action
-          icon="play-circle"
-          size={48}
-          color="#7e22ce"
-          className="m-0 p-0"
-          onPress={() => console.log("play !")}
-        />
-        <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 18, fontWeight: "bold" }} onPress={showModal} />
-        <Songmodal visible={visible} hideModal={hideModal} />
-        <Sortmenu />
-        <Appbar.Action icon="playlist-check" size={28} />
-      </Appbar.Header>
-      <FlatList
-        // className="bg-white h-[38%]"
-        className="bg-white h-[80%]"
-        data={["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"]}
-        renderItem={({ item }) => <Songcard item={item} />}
-        keyExtractor={(_) => _}
-        showsVerticalScrollIndicator={false}
+    <Appbar.Header className="bg-white">
+      <Appbar.Action
+        icon="play-circle"
+        size={48}
+        color="#7e22ce"
+        className="m-0 p-0"
+        onPress={() => console.log("play !")}
       />
+      <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 18, fontWeight: "bold" }} onPress={showModal} />
+      <Songmodal visible={visible} hideModal={hideModal} />
+      <Sortmenu />
+      <Appbar.Action icon="playlist-check" size={28} />
+    </Appbar.Header>
+  );
+};
+
+const Content = () => (
+  <FlatList
+    // className="bg-white h-[38%]"
+    className="bg-white h-[80%]"
+    data={songs}
+    renderItem={({ item }) => <Songcard item={item} />}
+    showsVerticalScrollIndicator={false}
+  />
+);
+
+export function SongsScreen({}) {
+  return (
+    <View>
+      <ScreenHeader header={<Header />} />
+      <ScreenContent content={<Content />} />
     </View>
   );
 }

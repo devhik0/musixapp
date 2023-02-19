@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { Sortmenu } from "../Sortmenu";
-import { FavModalContent } from "./menubar/FavModalContent";
-import { ListModalContent } from "./menubar/ListModalContent";
-import { RecentModalContent } from "./menubar/RecentModalContent";
-import { Menucard } from "./Menucard";
+import { Sortmenu } from "../../Sortmenu";
+import { Menucard } from "../Menucard";
+import { FavModalContent } from "./FavModalContent";
+import { ListModalContent } from "./ListModalContent";
+import { RecentModalContent } from "./RecentModalContent";
 
 const songs = ["müslüm gürses", "serdar ortaç", "bengü", "ebru yaşar"];
 

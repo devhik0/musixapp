@@ -1,6 +1,6 @@
 == REACT NATIVE VERSION ==  
 
-** screens refactor
+** screen, -> header,content  =>  refactor
 
 => TODO: 
 
