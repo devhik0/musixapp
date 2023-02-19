@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FlatList, StatusBar, Text, View } from "react-native";
 import { Modal, Portal, ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Playlistmenu } from "./Playlistmenu";
+import { Playlistmenu } from "../menu/Playlistmenu";
 import { Songinfomenu } from "./Songinfomenu";
 
 type Songmodalprops = { visible: boolean; hideModal: () => void };

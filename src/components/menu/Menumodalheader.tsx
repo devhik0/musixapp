@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { Songmodal } from "../Songmodal";
+import { Songmodal } from "../song/Songmodal";
 
 export type Menumodalheaderprops = { headerButtons: JSX.Element };
 

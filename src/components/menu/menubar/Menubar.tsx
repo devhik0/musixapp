@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { Sortmenu } from "../../Sortmenu";
 import { Menucard } from "../Menucard";
+import { Sortmenu } from "../Sortmenu";
 import { FavModalContent } from "./FavModalContent";
 import { ListModalContent } from "./ListModalContent";
 import { RecentModalContent } from "./RecentModalContent";

@@ -1,7 +1,5 @@
 == REACT NATIVE VERSION ==  
 
-** screen, -> header,content  =>  refactor
-
 => TODO: 
 
 * refactor

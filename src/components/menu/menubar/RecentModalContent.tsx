@@ -1,7 +1,7 @@
 import { FlatList, View } from "react-native";
 import { Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Songmenu } from "src/components/Songmenu";
+import { Songmenu } from "src/components/song/Songmenu";
 
 export const RecentModalContent = () => {
   const recents = ["zeynep  bastık", "kenan doğulu"];

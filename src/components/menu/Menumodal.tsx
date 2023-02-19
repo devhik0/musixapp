@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { Modal, Portal } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Bottomnav } from "../Bottomnav";
+import { Bottomnav } from "../nav/Bottomnav";
 import { type ModalProps } from "./Menucard";
 import { Menumodalheader } from "./Menumodalheader";
 

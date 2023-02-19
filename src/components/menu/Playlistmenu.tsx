@@ -1,7 +1,7 @@
 import { FlatList, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { Button, Modal, Portal } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Songcard } from "./Songcard";
+import { Songcard } from "../song/Songcard";
 
 type Playlistmenuprops = { visiblelist: boolean; hideModalList: () => void };
 
