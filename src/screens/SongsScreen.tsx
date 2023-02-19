@@ -14,13 +14,7 @@ const Header = () => {
 
   return (
     <Appbar.Header className="bg-white">
-      <Appbar.Action
-        icon="play-circle"
-        size={48}
-        color="#7e22ce"
-        className="m-0 p-0"
-        onPress={() => console.log("play !")}
-      />
+      <Appbar.Action icon="play-circle" size={48} color="#7e22ce" className="m-0 p-0" onPress={showModal} />
       <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 18, fontWeight: "bold" }} onPress={showModal} />
       <Songmodal visible={visible} hideModal={hideModal} />
       <Sortmenu />

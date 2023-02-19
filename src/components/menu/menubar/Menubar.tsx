@@ -6,9 +6,11 @@ import { FavModalContent } from "./FavModalContent";
 import { ListModalContent } from "./ListModalContent";
 import { RecentModalContent } from "./RecentModalContent";
 
-const songs = ["müslüm gürses", "serdar ortaç", "bengü", "ebru yaşar"];
-
 export const Menubar = () => {
+  const songs = ["müslüm gürses", "serdar ortaç", "bengü", "ebru yaşar"];
+  const recents = ["zeynep  bastık", "kenan doğulu"];
+  const playlists = ["playlist 1", "playlist 2"];
+
   const FavModalButtons = (
     <View className="flex-row">
       <Sortmenu />
@@ -35,7 +37,7 @@ export const Menubar = () => {
         text="liste"
         icon="playlist-music"
         songs={songs}
-        modalContent={<ListModalContent />}
+        modalContent={<ListModalContent playlists={playlists} />}
         headerButtons={ListModalButton}
       />
       <Menucard
@@ -44,7 +46,7 @@ export const Menubar = () => {
         text="çalınan"
         icon="history"
         songs={songs}
-        modalContent={<RecentModalContent />}
+        modalContent={<RecentModalContent recents={recents} />}
         headerButtons={RecentModalButton}
       />
     </View>

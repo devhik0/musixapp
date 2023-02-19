@@ -2,9 +2,7 @@ import { FlatList, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-export const ListModalContent = () => {
-  const playlists = ["playlist 1", "playlist 2"];
-
+const ListContent = ({ playlists }: { playlists: string[] }) => {
   return (
     <FlatList
       data={playlists}
@@ -24,4 +22,8 @@ export const ListModalContent = () => {
       )}
     />
   );
+};
+
+export const ListModalContent = ({ playlists }: { playlists: string[] }) => {
+  return <ListContent playlists={playlists} />;
 };
