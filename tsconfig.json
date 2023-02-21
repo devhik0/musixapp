@@ -6,8 +6,6 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "baseUrl": ".",
-    // "paths": {
-    // },
     "types": ["nativewind/types"]
   },
   "include": ["**/*.ts", "**/*.tsx"]
