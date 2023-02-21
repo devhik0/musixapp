@@ -16,7 +16,27 @@ import {
 } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Songmenu = () => {
+type Menumodalheaderprops = { headerButtons: JSX.Element };
+type ModalProps = Menumodalheaderprops & {
+  text: string;
+  title: string;
+  songs: string[];
+  modalContent: JSX.Element | JSX.Element[];
+};
+type Menucardprops = ModalProps & {
+  bg: string;
+  icon: string;
+};
+type Menumodalprops = ModalProps & {
+  visible: boolean;
+  hideModal: () => void;
+};
+type Playlistmenuprops = { visiblelist: boolean; hideModalList: () => void };
+type ScreenContentProps = { content: JSX.Element };
+type ScreenHeaderProps = { header: JSX.Element };
+type Songmodalprops = { visible: boolean; hideModal: () => void };
+
+const SongMenu = () => {
   const songOptions = ["Daha sonra oynat", "Sıraya ekle", "Çalma listesine ekle", "Sil", "Paylaş"];
 
   const [visible, setVisible] = useState(false);
@@ -40,7 +60,7 @@ const Songmenu = () => {
     </View>
   );
 };
-const Songinfomenu = () => {
+const SongInfoMenu = () => {
   const menuItems = [
     "Uyku zamanlayıcı",
     "Zil sesi düzenleyici",
@@ -74,8 +94,7 @@ const Songinfomenu = () => {
     </Menu>
   );
 };
-type Songcardprops = { item: string };
-const Songcard = ({ item }: Songcardprops) => {
+const SongCard = ({ item }: { item: string }) => {
   return (
     <View className="mb-6 flex flex-row shadow-none justify-between">
       <Icon name="music-box-outline" size={64} color="#aaa" />
@@ -89,7 +108,7 @@ const Songcard = ({ item }: Songcardprops) => {
       </View>
       <View className="flex-row items-center">
         <Appbar.Action icon="share-outline" size={32} color="#aaa" />
-        <Songmenu />
+        <SongMenu />
       </View>
     </View>
   );
@@ -118,9 +137,7 @@ const ListContent = ({ playlists }: { playlists: string[] }) => {
 const ListModalContent = ({ playlists }: { playlists: string[] }) => {
   return <ListContent playlists={playlists} />;
 };
-type RecentContentProps = { item: string; index: number };
-type RecentModalContentProps = { recents: string[] };
-const RecentContent = ({ item, index }: RecentContentProps) => {
+const RecentContent = ({ item, index }: { item: string; index: number }) => {
   return (
     <View className="mb-6 flex flex-row shadow-none justify-around items-center">
       <Text className="text-[16px] mx-2">0{index + 1}</Text>
@@ -134,15 +151,15 @@ const RecentContent = ({ item, index }: RecentContentProps) => {
         </Text>
       </View>
       <View className="flex-row items-center">
-        <Songmenu />
+        <SongMenu />
       </View>
     </View>
   );
 };
-const RecentModalContent = ({ recents }: RecentModalContentProps) => {
+const RecentModalContent = ({ recents }: { recents: string[] }) => {
   return <FlatList data={recents} renderItem={({ item, index }) => <RecentContent item={item} index={index} />} />;
 };
-const Sortmenu = () => {
+const SortMenu = () => {
   const sortby = ["Son eklenene", "Ada", "Artiste"];
   const [checked, setChecked] = useState(sortby[0]);
 
@@ -189,7 +206,7 @@ const Search = () => {
     />
   );
 };
-const Topnav = () => {
+const TopNav = () => {
   return (
     <Appbar.Header className="bg-white">
       <Appbar.Action icon="tune-variant" onPress={() => console.log("test")} />
@@ -197,17 +214,7 @@ const Topnav = () => {
     </Appbar.Header>
   );
 };
-type ModalProps = Menumodalheaderprops & {
-  text: string;
-  title: string;
-  songs: string[];
-  modalContent: JSX.Element | JSX.Element[];
-};
-type Menucardprops = ModalProps & {
-  bg: string;
-  icon: string;
-};
-const Menucard = ({ text, title, songs, headerButtons, modalContent, bg, icon }: Menucardprops) => {
+const MenuCard = ({ text, title, songs, headerButtons, modalContent, bg, icon }: Menucardprops) => {
   const modalProps: ModalProps = { text, title, songs, headerButtons, modalContent };
 
   const [visible, setVisible] = useState(false);
@@ -226,12 +233,11 @@ const Menucard = ({ text, title, songs, headerButtons, modalContent, bg, icon }:
           </Text>
         </Card.Content>
       </Card>
-      <Menumodal {...menuModalProps} />
+      <MenuModal {...menuModalProps} />
     </View>
   );
 };
-type Menumodalheaderprops = { headerButtons: JSX.Element };
-const Menumodalheader = ({ headerButtons }: Menumodalheaderprops) => {
+const MenuModalHeader = ({ headerButtons }: Menumodalheaderprops) => {
   const [visiblesong, setVisibleSong] = useState(false);
   const showModalSong = () => setVisibleSong(true);
   const hideModalSong = () => setVisibleSong(false);
@@ -241,23 +247,19 @@ const Menumodalheader = ({ headerButtons }: Menumodalheaderprops) => {
       <Appbar.Header className="bg-white">
         <Appbar.Action icon="play-circle" size={36} color="#7e22ce" className="m-0 p-0" onPress={showModalSong} />
         <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 16, fontWeight: "bold" }} onPress={showModalSong} />
-        <Songmodal visible={visiblesong} hideModal={hideModalSong} />
+        <SongModal visible={visiblesong} hideModal={hideModalSong} />
         {headerButtons}
       </Appbar.Header>
     </View>
   );
 };
 const FavContent = ({ item }: { item: string }) => {
-  return <Songcard item={item} />;
+  return <SongCard item={item} />;
 };
 const FavModalContent = ({ songs }: { songs: string[] }) => (
   <FlatList data={songs} renderItem={({ item }) => <FavContent item={item} />} />
 );
-type Menumodalprops = ModalProps & {
-  visible: boolean;
-  hideModal: () => void;
-};
-const Menumodal = ({ title, text, songs, modalContent, headerButtons, visible, hideModal }: Menumodalprops) => {
+const MenuModal = ({ title, text, songs, modalContent, headerButtons, visible, hideModal }: Menumodalprops) => {
   const containerStyle = { backgroundColor: "#fff", flex: 1 };
 
   const menuModalHeaderProps = { headerButtons };
@@ -269,18 +271,17 @@ const Menumodal = ({ title, text, songs, modalContent, headerButtons, visible, h
           <Icon name="chevron-left" size={32} style={{ marginRight: 128 }} onPress={hideModal} />
           <Text className="font-bold text-xl">{title}</Text>
         </View>
-        <Menumodalheader {...menuModalHeaderProps} />
+        <MenuModalHeader {...menuModalHeaderProps} />
         <View className="absolute top-28 w-full h-[75%]">{modalContent}</View>
         {!songs && <Text className="text-center text-xl">Hiç {text} yok</Text>}
         <View className="absolute bottom-0 w-full">
-          <Bottomnav />
+          <BottomNav />
         </View>
       </Modal>
     </Portal>
   );
 };
-type Playlistmenuprops = { visiblelist: boolean; hideModalList: () => void };
-const Playlistmenu = ({ visiblelist, hideModalList }: Playlistmenuprops) => {
+const PlaylistMenu = ({ visiblelist, hideModalList }: Playlistmenuprops) => {
   const containerStyleList = { backgroundColor: "#fff", flex: 1 };
 
   return (
@@ -302,7 +303,7 @@ const Playlistmenu = ({ visiblelist, hideModalList }: Playlistmenuprops) => {
           renderItem={({ item, index }) => (
             <TouchableOpacity className="flex-row justify-evenly mt-1">
               <Text className="text-lg m-4">0{index + 1}</Text>
-              <Songcard item={item} />
+              <SongCard item={item} />
             </TouchableOpacity>
           )}
         />
@@ -318,14 +319,14 @@ const Playlistmenu = ({ visiblelist, hideModalList }: Playlistmenuprops) => {
     </Portal>
   );
 };
-const Menubar = () => {
+const MenuBar = () => {
   const songs = ["müslüm gürses", "serdar ortaç", "bengü", "ebru yaşar"];
   const recents = ["zeynep  bastık", "kenan doğulu"];
   const playlists = ["playlist 1", "playlist 2"];
 
   const FavModalButtons = (
     <View className="flex-row">
-      <Sortmenu />
+      <SortMenu />
       <Appbar.Action icon="playlist-check" size={28} />
     </View>
   );
@@ -334,7 +335,7 @@ const Menubar = () => {
 
   return (
     <View className="bg-white flex-row gap-x-3 py-4 justify-center ">
-      <Menucard
+      <MenuCard
         title="Favoriler"
         bg="#7e22ce"
         text="favori"
@@ -343,7 +344,7 @@ const Menubar = () => {
         modalContent={<FavModalContent songs={songs} />}
         headerButtons={FavModalButtons}
       />
-      <Menucard
+      <MenuCard
         title="Listeler"
         bg="#0f766e"
         text="liste"
@@ -352,7 +353,7 @@ const Menubar = () => {
         modalContent={<ListModalContent playlists={playlists} />}
         headerButtons={ListModalButton}
       />
-      <Menucard
+      <MenuCard
         title="En Son"
         bg="#f59e0b"
         text="çalınan"
@@ -375,8 +376,8 @@ const SongsHeader = () => {
     <Appbar.Header className="bg-white">
       <Appbar.Action icon="play-circle" size={48} color="#7e22ce" className="m-0 p-0" onPress={showModal} />
       <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 18, fontWeight: "bold" }} onPress={showModal} />
-      <Songmodal visible={visible} hideModal={hideModal} />
-      <Sortmenu />
+      <SongModal visible={visible} hideModal={hideModal} />
+      <SortMenu />
       <Appbar.Action icon="playlist-check" size={28} />
     </Appbar.Header>
   );
@@ -386,7 +387,7 @@ const SongsContent = () => (
     // className="bg-white h-[38%]"
     className="bg-white h-[80%]"
     data={songs}
-    renderItem={({ item }) => <Songcard item={item} />}
+    renderItem={({ item }) => <SongCard item={item} />}
     showsVerticalScrollIndicator={false}
   />
 );
@@ -537,7 +538,6 @@ const FoldersScreen = () => {
   );
 };
 // ----
-type ScreenContentProps = { content: JSX.Element };
 const ScreenContent = ({ content }: ScreenContentProps) => {
   return (
     <View>
@@ -546,13 +546,12 @@ const ScreenContent = ({ content }: ScreenContentProps) => {
     </View>
   );
 };
-type ScreenHeaderProps = { header: JSX.Element };
 const ScreenHeader = ({ header }: ScreenHeaderProps) => {
   return <View>{header}</View>;
 };
 // screens
 const Tab = createMaterialTopTabNavigator();
-const Linknav = () => {
+const LinkNav = () => {
   const screenOptions = { tabBarIndicatorStyle: { backgroundColor: "#7e22ce", height: 4, borderRadius: 5 } };
 
   return (
@@ -567,8 +566,7 @@ const Linknav = () => {
     </View>
   );
 };
-type Songmodalprops = { visible: boolean; hideModal: () => void };
-const Songmodal = ({ visible, hideModal }: Songmodalprops) => {
+const SongModal = ({ visible, hideModal }: Songmodalprops) => {
   const containerStyle = { backgroundColor: "#42007B", flex: 1 };
 
   const [visiblelist, setVisibleList] = useState(false);
@@ -583,7 +581,7 @@ const Songmodal = ({ visible, hideModal }: Songmodalprops) => {
           <View className="container flex-1 flex-row absolute top-0 p-2 justify-between items-center">
             <Icon name="chevron-down" size={28} color="#e5e7eb" onPress={hideModal} />
             <Text className="text-lg ml-1 text-gray-300">Şarkı bilgileri</Text>
-            <Songinfomenu />
+            <SongInfoMenu />
           </View>
           <View className="justify-center items-center h-[75%]">
             <Icon name="music-box" size={312} color="#a56bd6" />
@@ -604,7 +602,7 @@ const Songmodal = ({ visible, hideModal }: Songmodalprops) => {
                   </View>
                 )}
               />
-              <Playlistmenu visiblelist={visiblelist} hideModalList={hideModalList} />
+              <PlaylistMenu visiblelist={visiblelist} hideModalList={hideModalList} />
             </View>
           </View>
           <View>
@@ -622,7 +620,7 @@ const Songmodal = ({ visible, hideModal }: Songmodalprops) => {
     </Portal>
   );
 };
-const Bottomnav = () => {
+const BottomNav = () => {
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -642,7 +640,7 @@ const Bottomnav = () => {
           </View>
         </Appbar.Header>
       </TouchableOpacity>
-      <Songmodal visible={visible} hideModal={hideModal} />
+      <SongModal visible={visible} hideModal={hideModal} />
     </View>
   );
 };
@@ -651,10 +649,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-      <Topnav />
-      <Menubar />
-      <Linknav />
-      <Bottomnav />
+      <TopNav />
+      <MenuBar />
+      <LinkNav />
+      <BottomNav />
     </NavigationContainer>
   );
 }
