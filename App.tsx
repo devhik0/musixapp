@@ -16,25 +16,10 @@ import {
 } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-type Menumodalheaderprops = { headerButtons: JSX.Element };
-type ModalProps = Menumodalheaderprops & {
-  text: string;
-  title: string;
-  songs: string[];
-  modalContent: JSX.Element | JSX.Element[];
-};
-type Menucardprops = ModalProps & {
-  bg: string;
-  icon: string;
-};
-type Menumodalprops = ModalProps & {
-  visible: boolean;
-  hideModal: () => void;
-};
-type Playlistmenuprops = { visiblelist: boolean; hideModalList: () => void };
-type ScreenContentProps = { content: JSX.Element };
-type ScreenHeaderProps = { header: JSX.Element };
-type Songmodalprops = { visible: boolean; hideModal: () => void };
+const songs = ["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"];
+const albums = ["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"];
+const artists = ["Ahmet", "Mehmet", "Veli", "Fatma", "Ceylin", "Ayşe", "Deniz", "Zeynep"].sort();
+const folders = ["Download"];
 
 const SongMenu = () => {
   const songOptions = ["Daha sonra oynat", "Sıraya ekle", "Çalma listesine ekle", "Sil", "Paylaş"];
@@ -214,8 +199,29 @@ const TopNav = () => {
     </Appbar.Header>
   );
 };
-const MenuCard = ({ text, title, songs, headerButtons, modalContent, bg, icon }: Menucardprops) => {
-  const modalProps: ModalProps = { text, title, songs, headerButtons, modalContent };
+const MenuCard = ({
+  text,
+  title,
+  songs,
+  headerButtons,
+  modalContent,
+  bg,
+  icon,
+}: { headerButtons: JSX.Element } & {
+  text: string;
+  title: string;
+  songs: string[];
+  modalContent: JSX.Element | JSX.Element[];
+} & {
+  bg: string;
+  icon: string;
+}) => {
+  const modalProps: { headerButtons: JSX.Element } & {
+    text: string;
+    title: string;
+    songs: string[];
+    modalContent: JSX.Element | JSX.Element[];
+  } = { text, title, songs, headerButtons, modalContent };
 
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
@@ -237,7 +243,7 @@ const MenuCard = ({ text, title, songs, headerButtons, modalContent, bg, icon }:
     </View>
   );
 };
-const MenuModalHeader = ({ headerButtons }: Menumodalheaderprops) => {
+const MenuModalHeader = ({ headerButtons }: { headerButtons: JSX.Element }) => {
   const [visiblesong, setVisibleSong] = useState(false);
   const showModalSong = () => setVisibleSong(true);
   const hideModalSong = () => setVisibleSong(false);
@@ -259,7 +265,23 @@ const FavContent = ({ item }: { item: string }) => {
 const FavModalContent = ({ songs }: { songs: string[] }) => (
   <FlatList data={songs} renderItem={({ item }) => <FavContent item={item} />} />
 );
-const MenuModal = ({ title, text, songs, modalContent, headerButtons, visible, hideModal }: Menumodalprops) => {
+const MenuModal = ({
+  title,
+  text,
+  songs,
+  modalContent,
+  headerButtons,
+  visible,
+  hideModal,
+}: { headerButtons: JSX.Element } & {
+  text: string;
+  title: string;
+  songs: string[];
+  modalContent: JSX.Element | JSX.Element[];
+} & {
+  visible: boolean;
+  hideModal: () => void;
+}) => {
   const containerStyle = { backgroundColor: "#fff", flex: 1 };
 
   const menuModalHeaderProps = { headerButtons };
@@ -281,7 +303,7 @@ const MenuModal = ({ title, text, songs, modalContent, headerButtons, visible, h
     </Portal>
   );
 };
-const PlaylistMenu = ({ visiblelist, hideModalList }: Playlistmenuprops) => {
+const PlaylistMenu = ({ visiblelist, hideModalList }: { visiblelist: boolean; hideModalList: () => void }) => {
   const containerStyleList = { backgroundColor: "#fff", flex: 1 };
 
   return (
@@ -366,7 +388,6 @@ const MenuBar = () => {
   );
 };
 // screens
-const songs = ["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"];
 const SongsHeader = () => {
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
@@ -399,7 +420,6 @@ const SongsScreen = () => {
     </View>
   );
 };
-const albums = ["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"];
 const AlbumsHeader = () => {
   return (
     <Appbar.Header className="bg-white">
@@ -449,7 +469,6 @@ const AlbumsScreen = () => {
     </View>
   );
 };
-const artists = ["Ahmet", "Mehmet", "Veli", "Fatma", "Ceylin", "Ayşe", "Deniz", "Zeynep"].sort();
 const ArtistsHeader = () => {
   return (
     <Appbar.Header className="bg-white">
@@ -487,7 +506,6 @@ const ArtistsScreen = () => {
     </View>
   );
 };
-const folders = ["Download"];
 const FoldersHeader = () => {
   return (
     <Appbar.Header className="bg-white">
@@ -538,7 +556,7 @@ const FoldersScreen = () => {
   );
 };
 // ----
-const ScreenContent = ({ content }: ScreenContentProps) => {
+const ScreenContent = ({ content }: { content: JSX.Element }) => {
   return (
     <View>
       {/* //! variable, content */}
@@ -546,7 +564,7 @@ const ScreenContent = ({ content }: ScreenContentProps) => {
     </View>
   );
 };
-const ScreenHeader = ({ header }: ScreenHeaderProps) => {
+const ScreenHeader = ({ header }: { header: JSX.Element }) => {
   return <View>{header}</View>;
 };
 // screens
@@ -566,7 +584,7 @@ const LinkNav = () => {
     </View>
   );
 };
-const SongModal = ({ visible, hideModal }: Songmodalprops) => {
+const SongModal = ({ visible, hideModal }: { visible: boolean; hideModal: () => void }) => {
   const containerStyle = { backgroundColor: "#42007B", flex: 1 };
 
   const [visiblelist, setVisibleList] = useState(false);
