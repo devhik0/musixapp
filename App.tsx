@@ -79,71 +79,6 @@ const SongInfoMenu = () => {
     </Menu>
   );
 };
-const SongCard = ({ item }: { item: string }) => {
-  return (
-    <View className="mb-6 flex flex-row shadow-none justify-between">
-      <Icon name="music-box-outline" size={64} color="#aaa" />
-      <View className="flex-col py-2">
-        <Text variant="bodyLarge" className="font-bold">
-          {item}
-        </Text>
-        <Text variant="bodyLarge" className="text-gray-500">
-          Sanatçı | Albüm
-        </Text>
-      </View>
-      <View className="flex-row items-center">
-        <Appbar.Action icon="share-outline" size={32} color="#aaa" />
-        <SongMenu />
-      </View>
-    </View>
-  );
-};
-const ListContent = ({ playlists }: { playlists: string[] }) => {
-  return (
-    <FlatList
-      data={playlists}
-      renderItem={({ item }) => (
-        <View className=" mb-6 flex flex-row shadow-none justify-around items-center bg-purple-50 ">
-          <Icon name="music-box-outline" size={64} color="#aaa" />
-          <View className="flex-col py-2">
-            <Text variant="bodyLarge" className="font-bold">
-              {item}
-            </Text>
-            <Text variant="bodyLarge" className="text-gray-500">
-              Toplam 3 şarkı
-            </Text>
-          </View>
-          <Appbar.Action icon="play-outline" size={48} color="#aaa" />
-        </View>
-      )}
-    />
-  );
-};
-const ListModalContent = ({ playlists }: { playlists: string[] }) => {
-  return <ListContent playlists={playlists} />;
-};
-const RecentContent = ({ item, index }: { item: string; index: number }) => {
-  return (
-    <View className="mb-6 flex flex-row shadow-none justify-around items-center">
-      <Text className="text-[16px] mx-2">0{index + 1}</Text>
-      <Icon name="music-box-outline" size={64} color="#aaa" />
-      <View className="flex-col py-2">
-        <Text variant="bodyLarge" className="font-bold">
-          {item}
-        </Text>
-        <Text variant="bodyLarge" className="text-gray-500">
-          Sanatçı | Albüm
-        </Text>
-      </View>
-      <View className="flex-row items-center">
-        <SongMenu />
-      </View>
-    </View>
-  );
-};
-const RecentModalContent = ({ recents }: { recents: string[] }) => {
-  return <FlatList data={recents} renderItem={({ item, index }) => <RecentContent item={item} index={index} />} />;
-};
 const SortMenu = () => {
   const sortby = ["Son eklenene", "Ada", "Artiste"];
   const [checked, setChecked] = useState(sortby[0]);
@@ -199,6 +134,7 @@ const TopNav = () => {
     </Appbar.Header>
   );
 };
+// reusable
 const MenuCard = ({
   text,
   title,
@@ -243,28 +179,6 @@ const MenuCard = ({
     </View>
   );
 };
-const MenuModalHeader = ({ headerButtons }: { headerButtons: JSX.Element }) => {
-  const [visiblesong, setVisibleSong] = useState(false);
-  const showModalSong = () => setVisibleSong(true);
-  const hideModalSong = () => setVisibleSong(false);
-
-  return (
-    <View className=" absolute top-12 w-full">
-      <Appbar.Header className="bg-white">
-        <Appbar.Action icon="play-circle" size={36} color="#7e22ce" className="m-0 p-0" onPress={showModalSong} />
-        <Appbar.Content title="Karışık Çal" titleStyle={{ fontSize: 16, fontWeight: "bold" }} onPress={showModalSong} />
-        <SongModal visible={visiblesong} hideModal={hideModalSong} />
-        {headerButtons}
-      </Appbar.Header>
-    </View>
-  );
-};
-const FavContent = ({ item }: { item: string }) => {
-  return <SongCard item={item} />;
-};
-const FavModalContent = ({ songs }: { songs: string[] }) => (
-  <FlatList data={songs} renderItem={({ item }) => <FavContent item={item} />} />
-);
 const MenuModal = ({
   title,
   text,
@@ -284,7 +198,9 @@ const MenuModal = ({
 }) => {
   const containerStyle = { backgroundColor: "#fff", flex: 1 };
 
-  const menuModalHeaderProps = { headerButtons };
+  const [visiblesong, setVisibleSong] = useState(false);
+  const showModalSong = () => setVisibleSong(true);
+  const hideModalSong = () => setVisibleSong(false);
 
   return (
     <Portal>
@@ -293,7 +209,18 @@ const MenuModal = ({
           <Icon name="chevron-left" size={32} style={{ marginRight: 128 }} onPress={hideModal} />
           <Text className="font-bold text-xl">{title}</Text>
         </View>
-        <MenuModalHeader {...menuModalHeaderProps} />
+        <View className=" absolute top-12 w-full">
+          <Appbar.Header className="bg-white">
+            <Appbar.Action icon="play-circle" size={36} color="#7e22ce" className="m-0 p-0" onPress={showModalSong} />
+            <Appbar.Content
+              title="Karışık Çal"
+              titleStyle={{ fontSize: 16, fontWeight: "bold" }}
+              onPress={showModalSong}
+            />
+            <SongModal visible={visiblesong} hideModal={hideModalSong} />
+            {headerButtons}
+          </Appbar.Header>
+        </View>
         <View className="absolute top-28 w-full h-[75%]">{modalContent}</View>
         {!songs && <Text className="text-center text-xl">Hiç {text} yok</Text>}
         <View className="absolute bottom-0 w-full">
@@ -303,44 +230,7 @@ const MenuModal = ({
     </Portal>
   );
 };
-const PlaylistMenu = ({ visiblelist, hideModalList }: { visiblelist: boolean; hideModalList: () => void }) => {
-  const containerStyleList = { backgroundColor: "#fff", flex: 1 };
 
-  return (
-    <Portal>
-      <Modal visible={visiblelist} onDismiss={hideModalList} contentContainerStyle={containerStyleList}>
-        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-        <View className="w-full py-2 flex-row justify-between">
-          <View className="flex-row gap-x-4 ml-2">
-            <Icon name="shuffle" size={32} color="gray" />
-            <Text className="text-lg text-gray-600">Karıştır</Text>
-          </View>
-          <View className="flex-row mr-6 gap-x-4">
-            <Icon name="pencil-outline" size={32} color="gray" />
-            <Icon name="trash-can-outline" size={32} color="gray" />
-          </View>
-        </View>
-        <FlatList
-          data={["ahmet", "mehmet", "veli", "ayşe", "gizem", "hüseyin", "fadime", "emine"]}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity className="flex-row justify-evenly mt-1">
-              <Text className="text-lg m-4">0{index + 1}</Text>
-              <SongCard item={item} />
-            </TouchableOpacity>
-          )}
-        />
-        <Button
-          mode="contained"
-          className="mb-4 mx-8 items-center bg-gray-200"
-          labelStyle={{ fontSize: 18, color: "#000" }}
-          onPress={hideModalList}
-        >
-          Kapat
-        </Button>
-      </Modal>
-    </Portal>
-  );
-};
 const MenuBar = () => {
   const songs = ["müslüm gürses", "serdar ortaç", "bengü", "ebru yaşar"];
   const recents = ["zeynep  bastık", "kenan doğulu"];
@@ -363,7 +253,28 @@ const MenuBar = () => {
         text="favori"
         icon="heart"
         songs={songs}
-        modalContent={<FavModalContent songs={songs} />}
+        modalContent={
+          <FlatList
+            data={songs}
+            renderItem={({ item }) => (
+              <View className="mb-6 flex flex-row shadow-none justify-between">
+                <Icon name="music-box-outline" size={64} color="#aaa" />
+                <View className="flex-col py-2">
+                  <Text variant="bodyLarge" className="font-bold">
+                    {item}
+                  </Text>
+                  <Text variant="bodyLarge" className="text-gray-500">
+                    Sanatçı | Albüm
+                  </Text>
+                </View>
+                <View className="flex-row items-center">
+                  <Appbar.Action icon="share-outline" size={32} color="#aaa" />
+                  <SongMenu />
+                </View>
+              </View>
+            )}
+          />
+        }
         headerButtons={FavModalButtons}
       />
       <MenuCard
@@ -372,7 +283,25 @@ const MenuBar = () => {
         text="liste"
         icon="playlist-music"
         songs={songs}
-        modalContent={<ListModalContent playlists={playlists} />}
+        modalContent={
+          <FlatList
+            data={playlists}
+            renderItem={({ item }) => (
+              <View className=" mb-6 flex flex-row shadow-none justify-around items-center bg-purple-50 ">
+                <Icon name="music-box-outline" size={64} color="#aaa" />
+                <View className="flex-col py-2">
+                  <Text variant="bodyLarge" className="font-bold">
+                    {item}
+                  </Text>
+                  <Text variant="bodyLarge" className="text-gray-500">
+                    Toplam 3 şarkı
+                  </Text>
+                </View>
+                <Appbar.Action icon="play-outline" size={48} color="#aaa" />
+              </View>
+            )}
+          />
+        }
         headerButtons={ListModalButton}
       />
       <MenuCard
@@ -381,7 +310,28 @@ const MenuBar = () => {
         text="çalınan"
         icon="history"
         songs={songs}
-        modalContent={<RecentModalContent recents={recents} />}
+        modalContent={
+          <FlatList
+            data={recents}
+            renderItem={({ item, index }) => (
+              <View className="mb-6 flex flex-row shadow-none justify-around items-center">
+                <Text className="text-[16px] mx-2">0{index + 1}</Text>
+                <Icon name="music-box-outline" size={64} color="#aaa" />
+                <View className="flex-col py-2">
+                  <Text variant="bodyLarge" className="font-bold">
+                    {item}
+                  </Text>
+                  <Text variant="bodyLarge" className="text-gray-500">
+                    Sanatçı | Albüm
+                  </Text>
+                </View>
+                <View className="flex-row items-center">
+                  <SongMenu />
+                </View>
+              </View>
+            )}
+          />
+        }
         headerButtons={RecentModalButton}
       />
     </View>
@@ -408,7 +358,23 @@ const SongsContent = () => (
     // className="bg-white h-[38%]"
     className="bg-white h-[80%]"
     data={songs}
-    renderItem={({ item }) => <SongCard item={item} />}
+    renderItem={({ item }) => (
+      <View className="mb-6 flex flex-row shadow-none justify-between">
+        <Icon name="music-box-outline" size={64} color="#aaa" />
+        <View className="flex-col py-2">
+          <Text variant="bodyLarge" className="font-bold">
+            {item}
+          </Text>
+          <Text variant="bodyLarge" className="text-gray-500">
+            Sanatçı | Albüm
+          </Text>
+        </View>
+        <View className="flex-row items-center">
+          <Appbar.Action icon="share-outline" size={32} color="#aaa" />
+          <SongMenu />
+        </View>
+      </View>
+    )}
     showsVerticalScrollIndicator={false}
   />
 );
@@ -556,6 +522,7 @@ const FoldersScreen = () => {
   );
 };
 // ----
+// reusable
 const ScreenContent = ({ content }: { content: JSX.Element }) => {
   return (
     <View>
@@ -584,8 +551,11 @@ const LinkNav = () => {
     </View>
   );
 };
+// reusable
 const SongModal = ({ visible, hideModal }: { visible: boolean; hideModal: () => void }) => {
   const containerStyle = { backgroundColor: "#42007B", flex: 1 };
+
+  const containerStyleList = { backgroundColor: "#fff", flex: 1 };
 
   const [visiblelist, setVisibleList] = useState(false);
   const showModalList = () => setVisibleList(true);
@@ -620,7 +590,52 @@ const SongModal = ({ visible, hideModal }: { visible: boolean; hideModal: () => 
                   </View>
                 )}
               />
-              <PlaylistMenu visiblelist={visiblelist} hideModalList={hideModalList} />
+              <Portal>
+                <Modal visible={visiblelist} onDismiss={hideModalList} contentContainerStyle={containerStyleList}>
+                  <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+                  <View className="w-full py-2 flex-row justify-between">
+                    <View className="flex-row gap-x-4 ml-2">
+                      <Icon name="shuffle" size={32} color="gray" />
+                      <Text className="text-lg text-gray-600">Karıştır</Text>
+                    </View>
+                    <View className="flex-row mr-6 gap-x-4">
+                      <Icon name="pencil-outline" size={32} color="gray" />
+                      <Icon name="trash-can-outline" size={32} color="gray" />
+                    </View>
+                  </View>
+                  <FlatList
+                    data={["ahmet", "mehmet", "veli", "ayşe", "gizem", "hüseyin", "fadime", "emine"]}
+                    renderItem={({ item, index }) => (
+                      <TouchableOpacity className="flex-row justify-evenly mt-1">
+                        <Text className="text-lg m-4">0{index + 1}</Text>
+                        <View className="mb-6 flex flex-row shadow-none justify-between">
+                          <Icon name="music-box-outline" size={64} color="#aaa" />
+                          <View className="flex-col py-2">
+                            <Text variant="bodyLarge" className="font-bold">
+                              {item}
+                            </Text>
+                            <Text variant="bodyLarge" className="text-gray-500">
+                              Sanatçı | Albüm
+                            </Text>
+                          </View>
+                          <View className="flex-row items-center">
+                            <Appbar.Action icon="share-outline" size={32} color="#aaa" />
+                            <SongMenu />
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+                    )}
+                  />
+                  <Button
+                    mode="contained"
+                    className="mb-4 mx-8 items-center bg-gray-200"
+                    labelStyle={{ fontSize: 18, color: "#000" }}
+                    onPress={hideModalList}
+                  >
+                    Kapat
+                  </Button>
+                </Modal>
+              </Portal>
             </View>
           </View>
           <View>
