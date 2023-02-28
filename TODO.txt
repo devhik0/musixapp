@@ -10,6 +10,7 @@
 ** refactor
 * optimize components and styles for clean arch.
 * add path aliases (en son)
+* add barrel imports (index.ts)
 
 * run lighthouse audits
 * add $ > npx depcheck at end
