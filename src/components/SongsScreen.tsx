@@ -2,8 +2,7 @@ import { useState } from "react";
 import { FlatList, TouchableOpacity, View } from "react-native";
 import { Appbar, Menu, RadioButton, Text } from "react-native-paper";
 import { Icon } from "react-native-vector-icons/Icon";
-import { SongMenu } from "../songs/song/items/SongMenu";
-import { SongModal } from "../songs/song/SongModal";
+import { SongMenu, SongModal } from "../songs";
 import { ScreenContent } from "./shared/ScreenContent";
 import { ScreenHeader } from "./shared/ScreenHeader";
 

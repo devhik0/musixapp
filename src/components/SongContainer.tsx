@@ -1,5 +1,7 @@
 import { View } from "react-native";
-import { SongContent, SongInfo, SongProgress } from ".";
+import { SongContent } from "./SongContent";
+import { SongInfo } from "./SongInfo";
+import { SongProgress } from "./SongProgress";
 
 type TSongContainerProps = { hideModal: () => void };
 export const SongContainer = ({ hideModal }: TSongContainerProps) => {

@@ -2,7 +2,6 @@ import { FlatList, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import { Icon } from "react-native-vector-icons/Icon";
 
-export const ListModalButton = () => <Appbar.Action icon="playlist-plus" size={24} />;
 type TListModalContentProps = { playlists: string[] };
 export const ListModalContent = ({ playlists }: TListModalContentProps) => {
   return (

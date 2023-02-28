@@ -1,5 +1,7 @@
 == REACT NATIVE VERSION ==  
 
+= her componenti kendi dosyasına çıkar src/components/...
+
 -> sonraki ekranlar
 
 
