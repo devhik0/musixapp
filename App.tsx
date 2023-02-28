@@ -1,7 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "react-native";
-import { MenuBar } from "src/components/menu/MenuBar";
-import { BottomNav, LinkNav, TopNav } from "src/components/nav";
+import { BottomNav, LinkNav, MenuBar, TopNav } from "src/components";
 
 // TODO: Apply clean architecture
 /**
@@ -9,8 +8,8 @@ import { BottomNav, LinkNav, TopNav } from "src/components/nav";
  * //Extract types
  * //fix errors
  * //Extract components
+ * //add barrel imports (index.ts)
  * ! Edit components
- *
  *
  */
 
