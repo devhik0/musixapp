@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { SongModal } from "src/components/songs/SongModal";
+import { SongModal } from "./SongModal";
 
 type TMenuFooterProps = { hideModal: () => void };
 export const MenuFooter = ({ hideModal }: TMenuFooterProps) => {

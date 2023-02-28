@@ -1,6 +1,8 @@
 import { Text, View } from "react-native";
 import { Modal, Portal } from "react-native-paper";
-import { MenuFooter, MenuHeader, MenuNav } from ".";
+import { MenuFooter } from "./MenuFooter";
+import { MenuHeader } from "./MenuHeader";
+import { MenuNav } from "./MenuNav";
 
 type TMenuModalProps = {
   visible: boolean;

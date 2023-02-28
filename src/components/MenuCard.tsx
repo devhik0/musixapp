@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { Icon } from "react-native-vector-icons/Icon";
-import { MenuModal } from "../modal/MenuModal";
+import { MenuModal } from "./MenuModal";
 
 type TMenuCardProps = {
   title: string;

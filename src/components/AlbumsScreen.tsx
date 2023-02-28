@@ -2,7 +2,7 @@ import { FlatList, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import { Icon } from "react-native-vector-icons/Icon";
 import { ScreenContent } from "./ScreenContent";
-import { ScreenHeader } from "./screens/shared/ScreenHeader";
+import { ScreenHeader } from "./ScreenHeader";
 
 const AlbumsScreenHeader = () => {
   return (

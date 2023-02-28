@@ -2,9 +2,10 @@ import { useState } from "react";
 import { FlatList, TouchableOpacity, View } from "react-native";
 import { Appbar, Menu, RadioButton, Text } from "react-native-paper";
 import { Icon } from "react-native-vector-icons/Icon";
-import { SongMenu, SongModal } from "../songs";
-import { ScreenContent } from "./shared/ScreenContent";
-import { ScreenHeader } from "./shared/ScreenHeader";
+import { ScreenContent } from "./ScreenContent";
+import { ScreenHeader } from "./ScreenHeader";
+import { SongMenu } from "./SongMenu";
+import { SongModal } from "./SongModal";
 
 const SongScreenHeader = () => {
   const [visible, setVisible] = useState(false);

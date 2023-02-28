@@ -1,9 +1,12 @@
 import React from "react";
 import { View } from "react-native";
-import { MenuCard } from "../card/MenuCard";
-import { FavModalButton, FavModalContent } from "./fav";
-import { ListModalButton, ListModalContent } from "./list";
-import { RecentModalButton, RecentModalContent } from "./recent";
+import { FavModalButton } from "./FavModalButton";
+import { FavModalContent } from "./FavModalContent";
+import { ListModalButton } from "./ListModalButton";
+import { ListModalContent } from "./ListModalContent";
+import { MenuCard } from "./MenuCard";
+import { RecentModalButton } from "./RecentModalButton";
+import { RecentModalContent } from "./RecentModalContent";
 
 export const MenuBar = () => {
   const songs = ["Dargın Zeynep", "Kül Merve", "ceylin", "deniz", "ayse", "mehmet", "yesim"];

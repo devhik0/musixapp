@@ -1,14 +1,13 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "react-native";
-import { BottomNav, LinkNav, MenuBar, TopNav } from "src/components";
+import { BottomNav } from "src/components/BottomNav";
+import { LinkNav } from "src/components/LinkNav";
+import { MenuBar } from "src/components/MenuBar";
+import { TopNav } from "src/components/TopNav";
 
 // TODO: Apply clean architecture
 /**
  * TODOS:
- * //Extract types
- * //fix errors
- * //Extract components
- * //add barrel imports (index.ts)
  * ! Edit components
  *
  */

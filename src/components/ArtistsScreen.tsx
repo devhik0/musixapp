@@ -1,7 +1,7 @@
 import { FlatList, Text, View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { ScreenContent } from "./shared/ScreenContent";
-import { ScreenHeader } from "./shared/ScreenHeader";
+import { ScreenContent } from "./ScreenContent";
+import { ScreenHeader } from "./ScreenHeader";
 
 const ArtistsScreenHeader = () => {
   return (

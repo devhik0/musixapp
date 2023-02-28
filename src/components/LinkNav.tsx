@@ -1,6 +1,9 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Text, View } from "react-native";
-import { AlbumsScreen, ArtistsScreen, FoldersScreen, SongsScreen } from "../screens";
+import { AlbumsScreen } from "./AlbumsScreen";
+import { ArtistsScreen } from "./ArtistsScreen";
+import { FoldersScreen } from "./FoldersScreen";
+import { SongsScreen } from "./SongsScreen";
 
 export const LinkNav = () => {
   const Tab = createMaterialTopTabNavigator();

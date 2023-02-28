@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { SongModal } from "../songs";
+import { SongModal } from "./SongModal";
 
 export const BottomNav = () => {
   const [visibleModal, setVisibleModal] = useState(false);

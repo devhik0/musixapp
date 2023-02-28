@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { Appbar } from "react-native-paper";
-import { SongModal } from "src/components/songs/SongModal";
+import { SongModal } from "./SongModal";
 
 type TMenuNavProps = { headerButtons: JSX.Element };
 export const MenuNav = ({ headerButtons }: TMenuNavProps) => {
